@@ -7,6 +7,38 @@
     <title>Quick Foodie</title>
   </head>
   <body>
-    <h1 class="text-xl font-bold underline">Hello test!</h1>
+    <!-- Navigation -->
+    <nav class="container mx-auto flex justify-between items-center p-4">
+      <!-- Logo and Menu Links -->
+      <div class="flex items-center space-x-4">
+        <!-- Logo -->
+        <div class="text-2xl font-bold">
+          <a href="#">LOGO</a>
+        </div>
+
+        <!-- Menu Links -->
+        <div class="space-x-2 uppercase">
+          <a href="#" class="hover:bg-gray-100 p-2 rounded">Menu</a>
+          <a href="#" class="hover:bg-gray-100 p-2 rounded">Rewards</a>
+          <a href="#" class="hover:bg-gray-100 p-2 rounded">Locations</a>
+          <a href="#" class="hover:bg-gray-100 p-2 rounded">Gift Cards</a>
+          <a href="#" class="hover:bg-gray-100 p-2 rounded">Log in</a>
+        </div>
+      </div>
+
+      <!-- Card Icon and Order Now Button -->
+      <div class="flex items-center space-x-4">
+        <!-- Card Icon -->
+        <div class="size-6 cursor-pointer">
+          <img class="w-full" src="./images/cart.svg" alt="Cart Icon" />
+        </div>
+        <!-- Order Now Button -->
+        <button
+          class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800"
+        >
+          Order Now
+        </button>
+      </div>
+    </nav>
   </body>
 </html>
