@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Chicken",
+    "price": 49,
+    "description": "Chicken fajitas are a Tex-Mex delight, with seasoned grilled chicken, sautéed bell peppers, and onions.",
+    "photoURL": "./images/chicken.png"
+  },
+  {
+    "id": "2",
+    "name": "Fajitas",
+    "price": 99,
+    "description": "Chicken fajitas are a Tex-Mex delight, with seasoned grilled chicken, sautéed bell peppers, and onions.",
+    "photoURL": "./images/fajitas.png"
+  },
+  {
+    "id": "3",
+    "name": "Margarita Grilled Chicken",
+    "price": 249,
+    "description": "Chicken fajitas are a Tex-Mex delight, with seasoned grilled chicken, sautéed bell peppers, and onions.",
+    "photoURL": "./images/margarita.png"
+  }
+]
