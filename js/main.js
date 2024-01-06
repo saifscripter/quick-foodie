@@ -85,6 +85,7 @@ function addItemToCart(item) {
 
 function addItemToUI(cartItem) {
     const cartItemElement = document.createElement('div');
+    cartItemElement.id = `item-${cartItem.id}`;
     cartItemElement.className = 'relative border-2 border-white p-2 rounded-md grid grid-cols-[1fr_2fr] gap-3 h-32';
 
     const itemImage = document.createElement('div');
@@ -121,6 +122,7 @@ function addItemToUI(cartItem) {
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'absolute top-0 right-0 bg-white text-red-600 size-6 rounded-md p-[6px] translate-x-1/2 -translate-y-1/2';
+    deleteButton.addEventListener('click', () => deleteCartItem(cartItem));
     
     const deleteIcon = document.createElement('img');
     deleteIcon.src = '../images/trash.svg'
@@ -168,6 +170,12 @@ function decreaseQuantity(cartItem) {
 function updateQuantityToUI(cartItem) {
     const quantityElement = document.getElementById(`quantity-${cartItem.id}`);
     quantityElement.textContent = cartItem.quantity;
+}
+
+// Function to delete a cart item
+function deleteCartItem(cartItem) {
+    const item = document.getElementById(`item-${cartItem.id}`);
+    item.parentNode.removeChild(item);
 }
 
 // Event listener for the close button
