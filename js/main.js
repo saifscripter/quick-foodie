@@ -9,7 +9,7 @@ const cartTotalPriceElement = getElement("totalPrice");
 const cartIndicator = getElement("cartIndicator");
 const sidebarTitle = getElement("sidebarTitle");
 
-let cartItems = [];
+let cartItems = getCart();
 
 // Functions to create DOM Elements
 const createFoodItemCard = (foodItem) => {
@@ -153,12 +153,14 @@ function addItemToCart(item) {
   };
 
   cartItems.push(_item);
+  updateCart(cartItems);
   createCartItemCard(_item);
 }
 
 function deleteCartItem(cartItem) {
   // Delete from the state
   cartItems = cartItems.filter((item) => item !== cartItem);
+  updateCart(cartItems);
 
   // Delete from the UI
   const cartItemElement = getElement(`item${cartItem.id}`);
@@ -174,6 +176,7 @@ function deleteCartItem(cartItem) {
 function increaseQuantity(cartItem) {
   // Increase in the state
   cartItem.quantity++;
+  updateCart(cartItems);
 
   // Update other UI changes
   displayQuantity(cartItem);
@@ -185,6 +188,7 @@ function decreaseQuantity(cartItem) {
   if (cartItem.quantity > 1) {
     // Decrease in the state
     cartItem.quantity--;
+    updateCart(cartItems);
 
     // Update corresponding UI changes
     displayQuantity(cartItem);
@@ -250,6 +254,19 @@ function displayTotalSelectedItems() {
   sidebarTitle.textContent = `${totalSelectedItems} item${
     totalSelectedItems > 1 ? "s" : ""
   }`;
+}
+
+// Function to update the cart in local storage
+function updateCart(cartItems) {
+  const cartItemsJSON = JSON.stringify(cartItems);
+  localStorage.setItem("cart", cartItemsJSON);
+}
+
+// Function to get the cart from local storage
+function getCart() {
+  const cartItemsJSON = localStorage.getItem("cart");
+  const cartItems = JSON.parse(cartItemsJSON) || [];
+  return cartItems;
 }
 
 // Global Event Listeners
