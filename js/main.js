@@ -21,7 +21,7 @@ const createFoodItemCard = (foodItem) => {
   photo.src = foodItem.photoURL;
 
   const name = document.createElement("h2");
-  name.className = "text-lg font-semibold mt-2";
+  name.className = "text-lg font-semibold mt-3";
   name.textContent = foodItem.name;
 
   const price = document.createElement("p");
@@ -29,12 +29,12 @@ const createFoodItemCard = (foodItem) => {
   price.textContent = `${foodItem.price.toFixed(2)}$/each`;
 
   const description = document.createElement("p");
-  description.className = "text-gray-600 mt-1";
+  description.className = "text-gray-600 text-[14px] mt-1";
   description.textContent = foodItem.description;
 
   const addToCartButton = createButton(
     "Add to Cart",
-    "bg-red-500 border-2 border-red-500 text-white w-full py-1 mt-2 rounded-md",
+    "bg-red-500 text-white w-full h-8 mt-3 rounded-md",
     `addToCart${foodItem.id}`
   );
 
@@ -43,7 +43,7 @@ const createFoodItemCard = (foodItem) => {
 
   const customizeButton = createButton(
     "Customize",
-    "border-2 border-red-500 text-red-500 font-semibold w-full py-1 mt-2 rounded-md"
+    "border-2 border-red-500 text-red-500 font-semibold w-full h-8 mt-2 rounded-md"
   );
 
   // Add the click event to the "Add to Cart" button
@@ -204,18 +204,14 @@ function decreaseQuantity(cartItem) {
 function enableAddToCartButton(button) {
   button.removeAttribute("disabled");
   button.classList.remove("bg-gray-700");
-  button.classList.remove("border-gray-700");
   button.classList.add("bg-red-500");
-  button.classList.add("border-red-500");
   button.textContent = "Add to Cart";
 }
 
 function disableAddToCartButton(button) {
   button.setAttribute("disabled", "true");
   button.classList.remove("bg-red-500");
-  button.classList.remove("border-red-500");
   button.classList.add("bg-gray-700");
-  button.classList.add("border-gray-700");
   button.textContent = "Added to Cart";
 }
 
