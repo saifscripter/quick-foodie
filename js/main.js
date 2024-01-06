@@ -34,7 +34,7 @@ const createFoodItemCard = (foodItem) => {
 
   const addToCartButton = createButton(
     "Add to Cart",
-    "bg-red-600 text-white w-full py-1 mt-4 rounded-md",
+    "bg-red-500 text-white w-full py-1 mt-4 rounded-md",
     `addToCart${foodItem.id}`
   );
 
@@ -204,13 +204,13 @@ function decreaseQuantity(cartItem) {
 function enableAddToCartButton(button) {
   button.removeAttribute("disabled");
   button.classList.remove("bg-gray-700");
-  button.classList.add("bg-red-600");
+  button.classList.add("bg-red-500");
   button.textContent = "Add to Cart";
 }
 
 function disableAddToCartButton(button) {
   button.setAttribute("disabled", "true");
-  button.classList.remove("bg-red-600");
+  button.classList.remove("bg-red-500");
   button.classList.add("bg-gray-700");
   button.textContent = "Added to Cart";
 }

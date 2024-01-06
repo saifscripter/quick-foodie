@@ -8,38 +8,43 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="container mx-auto flex justify-between items-center p-4">
+    <nav class="container mx-auto flex justify-between items-center py-4">
       <!-- Logo and Menu Links -->
       <div class="flex items-center space-x-4">
-        <!-- Logo -->
-        <div class="text-2xl font-bold">
-          <a href="#">LOGO</a>
+        <!-- Hamburger Menu -->
+        <div class="size-8 sm:hidden">
+          <img src="./images/bar.svg" alt="Hamburger Menu" />
         </div>
 
+        <!-- Logo -->
+        <a href="/">
+          <img src="./images/logo.svg" alt="Logo" />
+        </a>
+
         <!-- Menu Links -->
-        <div class="space-x-2 uppercase">
-          <a href="#" class="hover:bg-gray-100 p-2 rounded">Menu</a>
-          <a href="#" class="hover:bg-gray-100 p-2 rounded">Rewards</a>
-          <a href="#" class="hover:bg-gray-100 p-2 rounded">Locations</a>
-          <a href="#" class="hover:bg-gray-100 p-2 rounded">Gift Cards</a>
-          <a href="#" class="hover:bg-gray-100 p-2 rounded">Log in</a>
+        <div class="space-x-1 uppercase hidden sm:block">
+          <a href="#" class="hover:bg-gray-100 p-1 rounded">Menu</a>
+          <a href="#" class="hover:bg-gray-100 p-1 rounded">Rewards</a>
+          <a href="#" class="hover:bg-gray-100 p-1 rounded">Locations</a>
+          <a href="#" class="hover:bg-gray-100 p-1 rounded">Gift Cards</a>
+          <a href="#" class="hover:bg-gray-100 p-1 rounded">Log in</a>
         </div>
       </div>
 
       <!-- Card Icon and Order Now Button -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center gap-6">
         <!-- Cart Icon -->
-        <div id="cart" class="relative size-6 cursor-pointer">
+        <div id="cart" class="relative size-[20px] cursor-pointer">
           <img class="w-full" src="./images/bag.svg" alt="Cart Icon" />
           <div
-            class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 size-4 rounded bg-red-600 text-white text-xs flex justify-center items-center"
+            class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 size-4 rounded bg-red-500 text-white text-xs flex justify-center items-center"
           >
             <span id="cartIndicator">0</span>
           </div>
         </div>
         <!-- Order Now Button -->
         <button
-          class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+          class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
         >
           Order Now
         </button>
@@ -57,7 +62,7 @@
     <!-- Cart Sidebar -->
     <div
       id="cartSidebar"
-      class="fixed top-0 right-0 bottom-0 w-72 bg-red-600 shadow-lg transition-transform transform translate-x-full"
+      class="fixed top-0 right-0 bottom-0 w-64 bg-red-500 shadow-lg transition-transform transform translate-x-full"
     >
       <!-- Sidebar Header -->
       <div
