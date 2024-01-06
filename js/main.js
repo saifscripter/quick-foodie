@@ -2,7 +2,7 @@ const cartButton = document.getElementById('cart');
 const closeCartButton = document.getElementById('closeCart');
 const cartItemsContainer = document.getElementById('cartItems');
 
-const cartItems = [];
+let cartItems = [];
 
 document.addEventListener('DOMContentLoaded', function () {
     const foodItemsContainer = document.getElementById('foodItems');
@@ -107,14 +107,17 @@ function addItemToUI(cartItem) {
     const decrementButton = document.createElement('button');
     decrementButton.className = 'bg-gray-200 text-black h-8 w-6 flex justify-center items-center';
     decrementButton.innerHTML = '<span>-</span>';
+    decrementButton.addEventListener('click', () => decreaseQuantity(cartItem));
 
-    const quantityDisplay = document.createElement('div');
-    quantityDisplay.innerHTML = `<p>${cartItem.quantity}</p>`;
-    quantityDisplay.className = 'bg-white text-black text-xs h-6 w-8 flex justify-center items-center'
+    const quantityDisplay = document.createElement('p');
+    quantityDisplay.id = `quantity-${cartItem.id}`
+    quantityDisplay.textContent = cartItem.quantity;
+    quantityDisplay.className = 'bg-white text-black text-center h-6 w-8'
 
     const incrementButton = document.createElement('button');
     incrementButton.className = 'bg-gray-200 text-black h-8 w-6 flex justify-center items-center';
     incrementButton.innerHTML = '<span>+</span>';
+    incrementButton.addEventListener('click', () => increaseQuantity(cartItem));
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'absolute top-0 right-0 bg-white text-red-600 size-6 rounded-md p-[6px] translate-x-1/2 -translate-y-1/2';
@@ -144,6 +147,28 @@ function addItemToUI(cartItem) {
     // Append the cart item element to the container
     cartItemsContainer.appendChild(cartItemElement);
   }
+
+// Function to increase the quantity of a cart item
+function increaseQuantity(cartItem) {
+    cartItem.quantity++;
+    updateQuantityToUI(cartItem);
+}
+
+// Function to decrease the quantity of a cart item
+function decreaseQuantity(cartItem) {
+    if (cartItem.quantity > 1) {
+      cartItem.quantity--;
+    }
+
+    updateQuantityToUI(cartItem);
+}
+
+// Function to update Quantity
+
+function updateQuantityToUI(cartItem) {
+    const quantityElement = document.getElementById(`quantity-${cartItem.id}`);
+    quantityElement.textContent = cartItem.quantity;
+}
 
 // Event listener for the close button
 closeCartButton.addEventListener('click', hideCartSidebar);
