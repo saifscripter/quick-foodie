@@ -2,6 +2,8 @@ const cartButton = document.getElementById('cart');
 const closeCartButton = document.getElementById('closeCart');
 const cartItemsContainer = document.getElementById('cartItems');
 const cartTotalPriceElement = document.getElementById('totalPrice');
+const cartIndicator = document.getElementById('cartIndicator');
+const sidebarTitle = document.getElementById('sidebarTitle');
 
 let cartItems = [];
 
@@ -48,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             showCartSidebar();
             disableAddToCartButton(this)
             displayCartTotalPrice();
+            displayTotalSelectedItems();
           });
   
           // Append elements to the card
@@ -208,6 +211,7 @@ function deleteCartItem(cartItem) {
     enableAddToCartButton(addToCartButton);
 
     displayCartTotalPrice();
+    displayTotalSelectedItems();
 }
 
 
@@ -223,6 +227,12 @@ function disableAddToCartButton(button) {
     button.classList.remove('bg-red-600');
     button.classList.add('bg-gray-700');
     button.textContent = 'Added to Cart';
+}
+
+function displayTotalSelectedItems() {
+    const totalSelectedItems = cartItems.length;
+    cartIndicator.textContent = totalSelectedItems;
+    sidebarTitle.textContent = `${totalSelectedItems} item${totalSelectedItems > 1 ? 's' : ''}`;
 }
 
 // Event listener for the close button
