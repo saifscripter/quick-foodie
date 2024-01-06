@@ -224,10 +224,10 @@ function hideCartSidebar() {
 }
 
 function toggleCartSidebar() {
-  if (cartSidebar.style.transform === "translateX(100%)") {
-    showCartSidebar();
-  } else {
+  if (cartSidebar.style.transform === "translateX(0px)") {
     hideCartSidebar();
+  } else {
+    showCartSidebar();
   }
 }
 
