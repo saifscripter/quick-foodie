@@ -216,6 +216,14 @@ function hideCartSidebar() {
   cartSidebar.style.transform = "translateX(100%)";
 }
 
+function toggleCartSidebar() {
+  if (cartSidebar.style.transform === "translateX(100%)") {
+    showCartSidebar();
+  } else {
+    hideCartSidebar();
+  }
+}
+
 function displayQuantity(cartItem) {
   const quantityElement = getElement(`quantity${cartItem.id}`);
   quantityElement.textContent = cartItem.quantity;
@@ -252,4 +260,4 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 closeCartButton.addEventListener("click", hideCartSidebar);
 
-cartButton.addEventListener("click", showCartSidebar);
+cartButton.addEventListener("click", toggleCartSidebar);
