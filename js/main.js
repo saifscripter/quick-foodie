@@ -175,11 +175,11 @@ function increaseQuantity(cartItem) {
 function decreaseQuantity(cartItem) {
     if (cartItem.quantity > 1) {
       cartItem.quantity--;
+      
+      displayQuantity(cartItem);
+      displayItemTotalPrice(cartItem);
+      displayCartTotalPrice();
     }
-
-    displayQuantity(cartItem);
-    displayItemTotalPrice(cartItem);
-    displayCartTotalPrice();
 }
 
 // Function to display Quantity
