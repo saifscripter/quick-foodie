@@ -10,7 +10,7 @@
     <!-- Navigation -->
     <nav class="container mx-auto flex justify-between items-center py-4">
       <!-- Logo and Menu Links -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center gap-4">
         <!-- Hamburger Menu -->
         <div class="size-8 sm:hidden">
           <img src="./images/bar.svg" alt="Hamburger Menu" />
@@ -23,11 +23,21 @@
 
         <!-- Menu Links -->
         <div class="space-x-1 uppercase hidden sm:block">
-          <a href="#" class="hover:bg-gray-100 p-1 rounded">Menu</a>
-          <a href="#" class="hover:bg-gray-100 p-1 rounded">Rewards</a>
-          <a href="#" class="hover:bg-gray-100 p-1 rounded">Locations</a>
-          <a href="#" class="hover:bg-gray-100 p-1 rounded">Gift Cards</a>
-          <a href="#" class="hover:bg-gray-100 p-1 rounded">Log in</a>
+          <a href="#" class="hover:bg-gray-100 text-xs md:text-base p-1 rounded"
+            >Menu</a
+          >
+          <a href="#" class="hover:bg-gray-100 text-xs md:text-base p-1 rounded"
+            >Rewards</a
+          >
+          <a href="#" class="hover:bg-gray-100 text-xs md:text-base p-1 rounded"
+            >Locations</a
+          >
+          <a href="#" class="hover:bg-gray-100 text-xs md:text-base p-1 rounded"
+            >Gift Cards</a
+          >
+          <a href="#" class="hover:bg-gray-100 text-xs md:text-base p-1 rounded"
+            >Log in</a
+          >
         </div>
       </div>
 
@@ -44,7 +54,7 @@
         </div>
         <!-- Order Now Button -->
         <button
-          class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+          class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-500"
         >
           Order Now
         </button>
@@ -55,7 +65,7 @@
     <section class="container mx-auto">
       <div
         id="foodItems"
-        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6"
       ></div>
     </section>
 
@@ -66,7 +76,7 @@
     >
       <!-- Sidebar Header -->
       <div
-        class="flex justify-between items-center p-4 bg-white text-red-600 h-12"
+        class="flex justify-between items-center p-4 bg-white text-red-500 h-12"
       >
         <div class="flex items-center gap-4">
           <!-- Cart Icon -->
@@ -79,7 +89,7 @@
 
         <button
           id="closeCart"
-          class="border border-red-600 text-xs px-2 py-1 rounded"
+          class="border border-red-500 text-xs px-2 py-1 rounded"
         >
           Close
         </button>
@@ -93,7 +103,7 @@
 
       <!-- Sidebar Footer -->
       <div
-        class="w-full h-12 p-4 bg-white text-red-600 flex justify-center items-center"
+        class="w-full h-12 p-4 bg-white text-red-500 flex justify-center items-center"
       >
         <p class="text-lg font-semibold">
           Place Order: <span id="totalPrice">0.00 $</span>
