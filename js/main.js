@@ -67,7 +67,7 @@ const createFoodItemCard = (foodItem) => {
   foodItemsContainer.appendChild(card);
 };
 
-function createCartItemCard(cartItem) {
+const createCartItemCard = (cartItem) => {
   const cartItemElement = document.createElement("div");
   cartItemElement.id = `item${cartItem.id}`;
   cartItemElement.className =
@@ -146,7 +146,7 @@ function createCartItemCard(cartItem) {
 
   // Append the cart item element to the container
   cartItemsContainer.appendChild(cartItemElement);
-}
+};
 
 // Functions to handle cart operations
 function addItemToCart(item) {
@@ -224,10 +224,10 @@ function hideCartSidebar() {
 }
 
 function toggleCartSidebar() {
-  if (cartSidebar.style.transform === "translateX(100%)") {
-    showCartSidebar();
-  } else {
+  if (cartSidebar.style.transform === "translateX(0px)") {
     hideCartSidebar();
+  } else {
+    showCartSidebar();
   }
 }
 
@@ -260,7 +260,7 @@ function displayTotalSelectedItems() {
 }
 
 // Function to update the cart in local storage
-function updateCart(cartItems) {
+async function updateCart(cartItems) {
   const cartItemsJSON = JSON.stringify(cartItems);
   localStorage.setItem("cart", cartItemsJSON);
 }
