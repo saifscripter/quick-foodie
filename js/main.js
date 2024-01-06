@@ -1,6 +1,7 @@
 const cartButton = document.getElementById('cart');
 const closeCartButton = document.getElementById('closeCart');
 const cartItemsContainer = document.getElementById('cartItems');
+const cartTotalPriceElement = document.getElementById('totalPrice');
 
 let cartItems = [];
 
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
             addItemToCart(foodItem);
             showCartSidebar();
             disableAddToCartButton(this)
+            displayCartTotalPrice();
           });
   
           // Append elements to the card
@@ -121,6 +123,11 @@ function addItemToUI(cartItem) {
     incrementButton.innerHTML = '<span>+</span>';
     incrementButton.addEventListener('click', () => increaseQuantity(cartItem));
 
+    const totalPrice = document.createElement('p');
+    totalPrice.id = `total-price-${cartItem.id}`;
+    totalPrice.className = 'text-right'
+    totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(2)}$`;
+
     const deleteButton = document.createElement('button');
     deleteButton.className = 'absolute top-0 right-0 bg-white text-red-600 size-6 rounded-md p-[6px] translate-x-1/2 -translate-y-1/2';
     deleteButton.addEventListener('click', () => deleteCartItem(cartItem));
@@ -141,6 +148,7 @@ function addItemToUI(cartItem) {
     itemDetails.appendChild(itemName);
     itemDetails.appendChild(itemPrice);
     itemDetails.appendChild(quantityAdjustment);
+    itemDetails.appendChild(totalPrice);
     itemDetails.appendChild(deleteButton);
 
     // Append image and details to the cart item element
@@ -154,7 +162,10 @@ function addItemToUI(cartItem) {
 // Function to increase the quantity of a cart item
 function increaseQuantity(cartItem) {
     cartItem.quantity++;
-    updateQuantityToUI(cartItem);
+
+    displayQuantity(cartItem);
+    displayItemTotalPrice(cartItem);
+    displayCartTotalPrice();
 }
 
 // Function to decrease the quantity of a cart item
@@ -163,24 +174,42 @@ function decreaseQuantity(cartItem) {
       cartItem.quantity--;
     }
 
-    updateQuantityToUI(cartItem);
+    displayQuantity(cartItem);
+    displayItemTotalPrice(cartItem);
+    displayCartTotalPrice();
 }
 
-// Function to update Quantity
-
-function updateQuantityToUI(cartItem) {
+// Function to display Quantity
+function displayQuantity(cartItem) {
     const quantityElement = document.getElementById(`quantity-${cartItem.id}`);
     quantityElement.textContent = cartItem.quantity;
 }
 
+// Function to display item total price
+function displayItemTotalPrice(cartItem)  {
+    const totalPrice = document.getElementById(`total-price-${cartItem.id}`);
+    totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(2)}$`
+}
+
+// Function to display cart total price
+function displayCartTotalPrice() {
+    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    cartTotalPriceElement.textContent = `${total.toFixed(2)} $`;
+}
+
 // Function to delete a cart item
 function deleteCartItem(cartItem) {
+    cartItems = cartItems.filter(item => item !== cartItem);
+
     const item = document.getElementById(`item-${cartItem.id}`);
     item.parentNode.removeChild(item);
     
     const addToCartButton = document.getElementById(`add-to-cart-${cartItem.id}`);
     enableAddToCartButton(addToCartButton);
+
+    displayCartTotalPrice();
 }
+
 
 function enableAddToCartButton(button) {
     button.removeAttribute('disabled');
