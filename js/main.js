@@ -1,22 +1,4 @@
-const getElement = (id) => document.getElementById(id);
-
-const createButton = (text, className, id) => {
-  const button = document.createElement("button");
-  button.textContent = text;
-  button.className = className;
-  button.id = id;
-  return button;
-};
-
-const fetchData = async (url) => {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
+import { createButton, fetchData, getElement } from "./utils.js";
 
 // DOM Elements
 const foodItemsContainer = getElement("foodItems");
