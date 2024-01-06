@@ -833,6 +833,11 @@ video {
   display: none;
 }
 
+.size-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
@@ -2615,6 +2620,21 @@ video {
 
 .forced-color-adjust-none {
   forced-color-adjust: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 @media (min-width: 640px) {
