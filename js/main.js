@@ -1,3 +1,6 @@
+const cartButton = document.getElementById('cart');
+const closeCartButton = document.getElementById('closeCart');
+
 document.addEventListener('DOMContentLoaded', function () {
     const foodItemsContainer = document.getElementById('foodItems');
   
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // Add the click event to the "Add to Cart" button
           addToCartButton.addEventListener('click', () => {
             console.log(`Item added to cart: ${foodItem.id}`);
+            showCartSidebar()
           });
   
           // Append elements to the card
@@ -53,4 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .catch(error => console.error('Error fetching food items:', error));
   });
-  
+
+
+// Function to show the cart sidebar with smooth transition
+function showCartSidebar() {
+  cartSidebar.style.transform = 'translateX(0)';
+}
+
+// Function to hide the cart sidebar with smooth transition
+function hideCartSidebar() {
+  cartSidebar.style.transform = 'translateX(100%)';
+}
+
+// Event listener for the close button
+closeCartButton.addEventListener('click', hideCartSidebar);
+cartButton.addEventListener('click', showCartSidebar);
