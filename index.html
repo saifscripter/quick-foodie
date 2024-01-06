@@ -28,7 +28,7 @@
 
       <!-- Card Icon and Order Now Button -->
       <div class="flex items-center space-x-4">
-        <!-- Card Icon -->
+        <!-- Cart Icon -->
         <div id="cart" class="relative size-6 cursor-pointer">
           <img class="w-full" src="./images/cart.svg" alt="Cart Icon" />
           <div
@@ -63,7 +63,15 @@
       <div
         class="flex justify-between items-center p-4 bg-white text-red-600 h-16"
       >
-        <h2 id="sidebarTitle" class="text-xl font-semibold">Cart</h2>
+        <div class="flex items-center gap-4">
+          <!-- Cart Icon -->
+          <div id="cart" class="size-6">
+            <img class="w-full" src="./images/cart.svg" alt="Cart Icon" />
+          </div>
+          <!-- Cart Title -->
+          <h2 id="sidebarTitle" class="text-xl font-semibold">Cart</h2>
+        </div>
+
         <button id="closeCart" class="border border-red-600 px-2 py-1 rounded">
           Close
         </button>
