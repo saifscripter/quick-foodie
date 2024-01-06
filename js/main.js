@@ -81,7 +81,7 @@ const createCartItemCard = (cartItem) => {
 
   const itemName = document.createElement("h3");
   itemName.textContent = cartItem.name;
-  itemName.className = "font-semibold";
+  itemName.className = "font-semibold text-lg";
 
   const itemPrice = document.createElement("p");
   itemPrice.textContent = `${cartItem.price?.toFixed(2)}$/each`;
@@ -92,7 +92,7 @@ const createCartItemCard = (cartItem) => {
 
   const decrementButton = createButton(
     "-",
-    "bg-gray-200 text-black h-8 w-6 flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-[20px] flex justify-center items-center"
   );
 
   const quantityDisplay = document.createElement("p");
@@ -102,12 +102,12 @@ const createCartItemCard = (cartItem) => {
 
   const incrementButton = createButton(
     "+",
-    "bg-gray-200 text-black h-8 w-6 flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-[20px] flex justify-center items-center"
   );
 
   const totalPrice = document.createElement("p");
   totalPrice.id = `totalPrice${cartItem.id}`;
-  totalPrice.className = "text-right";
+  totalPrice.className = "absolute bottom-2 right-2 font-semibold";
   totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(
     2
   )}$`;
@@ -137,12 +137,12 @@ const createCartItemCard = (cartItem) => {
   itemDetails.appendChild(itemName);
   itemDetails.appendChild(itemPrice);
   itemDetails.appendChild(quantityAdjustment);
-  itemDetails.appendChild(totalPrice);
-  itemDetails.appendChild(deleteButton);
 
   // Append image and details to the cart item element
   cartItemElement.appendChild(itemImage);
   cartItemElement.appendChild(itemDetails);
+  cartItemElement.appendChild(totalPrice);
+  cartItemElement.appendChild(deleteButton);
 
   // Append the cart item element to the container
   cartItemsContainer.appendChild(cartItemElement);

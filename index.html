@@ -61,18 +61,21 @@
     >
       <!-- Sidebar Header -->
       <div
-        class="flex justify-between items-center p-4 bg-white text-red-600 h-16"
+        class="flex justify-between items-center p-4 bg-white text-red-600 h-12"
       >
         <div class="flex items-center gap-4">
           <!-- Cart Icon -->
-          <div id="cart" class="size-6">
+          <div id="cart" class="w-6">
             <img class="w-full" src="./images/bag.svg" alt="Cart Icon" />
           </div>
           <!-- Cart Title -->
           <h2 id="sidebarTitle" class="text-xl font-semibold">Cart</h2>
         </div>
 
-        <button id="closeCart" class="border border-red-600 px-2 py-1 rounded">
+        <button
+          id="closeCart"
+          class="border border-red-600 text-xs px-2 py-1 rounded"
+        >
           Close
         </button>
       </div>
@@ -80,12 +83,12 @@
       <!-- Cart Items -->
       <div
         id="cartItems"
-        class="text-white h-[calc(100vh-8rem)] overflow-y-scroll no-scrollbar p-4 space-y-4"
+        class="text-white h-[calc(100vh-6rem)] overflow-y-scroll no-scrollbar p-4 space-y-4"
       ></div>
 
       <!-- Sidebar Footer -->
       <div
-        class="w-full h-16 p-4 bg-white text-red-600 flex justify-center items-center"
+        class="w-full h-12 p-4 bg-white text-red-600 flex justify-center items-center"
       >
         <p class="text-lg font-semibold">
           Place Order: <span id="totalPrice">0.00 $</span>
