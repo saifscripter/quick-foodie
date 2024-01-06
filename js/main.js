@@ -38,6 +38,9 @@ const createFoodItemCard = (foodItem) => {
     `addToCart${foodItem.id}`
   );
 
+  if (cartItems.find(({ id }) => id === foodItem.id))
+    disableAddToCartButton(addToCartButton);
+
   const customizeButton = createButton(
     "Customize",
     "border-2 border-red-600 text-red-600 font-semibold w-full py-1 mt-2 rounded-md hover:text-red-700 hover:border-red-700"
@@ -272,7 +275,12 @@ function getCart() {
 // Global Event Listeners
 document.addEventListener("DOMContentLoaded", async function () {
   const foodItems = await fetchData("./../data/foodItems.json");
+
   foodItems.forEach(createFoodItemCard);
+  cartItems.forEach(createCartItemCard);
+
+  displayTotalSelectedItems();
+  displayCartTotalPrice();
 });
 
 closeCartButton.addEventListener("click", hideCartSidebar);
