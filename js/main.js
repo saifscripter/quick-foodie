@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
           description.textContent = foodItem.description;
   
           const addToCartButton = document.createElement('button');
-          addToCartButton.className = 'bg-red-600 text-white w-full py-1 mt-4 rounded-md hover:bg-red-700';
+          addToCartButton.id = `add-to-cart-${foodItem.id}`
+          addToCartButton.className = 'bg-red-600 text-white w-full py-1 mt-4 rounded-md';
           addToCartButton.textContent = 'Add to Cart';
           
           const customizeButton = document.createElement('button');
@@ -41,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
           customizeButton.textContent = 'Customize';
   
           // Add the click event to the "Add to Cart" button
-          addToCartButton.addEventListener('click', () => {
-            console.log(`Item added to cart: ${foodItem.id}`);
+          addToCartButton.addEventListener('click', function () {
             addItemToCart(foodItem);
-            showCartSidebar()
+            showCartSidebar();
+            disableAddToCartButton(this)
           });
   
           // Append elements to the card
@@ -176,6 +177,23 @@ function updateQuantityToUI(cartItem) {
 function deleteCartItem(cartItem) {
     const item = document.getElementById(`item-${cartItem.id}`);
     item.parentNode.removeChild(item);
+    
+    const addToCartButton = document.getElementById(`add-to-cart-${cartItem.id}`);
+    enableAddToCartButton(addToCartButton);
+}
+
+function enableAddToCartButton(button) {
+    button.removeAttribute('disabled');
+    button.classList.remove('bg-gray-700');
+    button.classList.add('bg-red-600');
+    button.textContent = 'Add to Cart';
+}
+
+function disableAddToCartButton(button) {
+    button.setAttribute('disabled', 'true');
+    button.classList.remove('bg-red-600');
+    button.classList.add('bg-gray-700');
+    button.textContent = 'Added to Cart';
 }
 
 // Event listener for the close button
