@@ -13,6 +13,7 @@ This project is a web application on implementing an "Add to Cart" feature with 
 - Cart operations (addition, quantity adjustment, price calculations, item removal)
 - Prevention of duplicated additions by disabling the "Add to Cart" button for an item once added to the cart.
 - Asynchronous handling of all operations to ensure a seamless user experience without page reloads.
+- Cart persistency using local storage.
 
 ## Technologies Used
 
