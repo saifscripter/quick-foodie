@@ -35,7 +35,7 @@ const createFoodItemCard = (foodItem) => {
   const addToCartButton = createButton(
     "Add to Cart",
     "bg-red-500 text-white w-full h-8 mt-3 rounded-md",
-    `addToCart${foodItem.id}`
+    `addToCart${foodItem.id}`,
   );
 
   if (cartItems.find(({ id }) => id === foodItem.id))
@@ -43,7 +43,7 @@ const createFoodItemCard = (foodItem) => {
 
   const customizeButton = createButton(
     "Customize",
-    "border-2 border-red-500 text-red-500 font-semibold w-full h-8 mt-2 rounded-md"
+    "border-2 border-red-500 text-red-500 font-semibold w-full h-8 mt-2 rounded-md",
   );
 
   // Add the click event to the "Add to Cart" button
@@ -92,7 +92,7 @@ const createCartItemCard = (cartItem) => {
 
   const decrementButton = createButton(
     "-",
-    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center",
   );
 
   const quantityDisplay = document.createElement("p");
@@ -103,14 +103,14 @@ const createCartItemCard = (cartItem) => {
 
   const incrementButton = createButton(
     "+",
-    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center",
   );
 
   const totalPrice = document.createElement("p");
   totalPrice.id = `totalPrice${cartItem.id}`;
   totalPrice.className = "absolute bottom-2 right-2 text-xs font-semibold";
   totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(
-    2
+    2,
   )}$`;
 
   const deleteButton = document.createElement("button");
@@ -240,14 +240,14 @@ function displayQuantity(cartItem) {
 function displayItemTotalPrice(cartItem) {
   const totalPrice = getElement(`totalPrice${cartItem.id}`);
   totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(
-    2
+    2,
   )}$`;
 }
 
 function displayCartTotalPrice() {
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
   cartTotalPriceElement.textContent = `${total.toFixed(2)} $`;
 }
