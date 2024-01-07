@@ -71,7 +71,7 @@ const createCartItemCard = (cartItem) => {
   const cartItemElement = document.createElement("div");
   cartItemElement.id = `item${cartItem.id}`;
   cartItemElement.className =
-    "relative border-2 border-white p-2 rounded-md grid grid-cols-[1fr_2fr] gap-3 h-32";
+    "relative border-2 border-white p-2 rounded-md grid grid-cols-[1fr_2fr] gap-3 h-28";
 
   const itemImage = document.createElement("div");
   itemImage.style.backgroundImage = `url(${cartItem.photoURL})`;
@@ -81,7 +81,7 @@ const createCartItemCard = (cartItem) => {
 
   const itemName = document.createElement("h3");
   itemName.textContent = cartItem.name;
-  itemName.className = "font-semibold text-lg";
+  itemName.className = "font-semibold";
 
   const itemPrice = document.createElement("p");
   itemPrice.textContent = `${cartItem.price?.toFixed(2)}$/each`;
@@ -92,22 +92,23 @@ const createCartItemCard = (cartItem) => {
 
   const decrementButton = createButton(
     "-",
-    "bg-gray-300 text-black h-6 w-[20px] flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center"
   );
 
   const quantityDisplay = document.createElement("p");
   quantityDisplay.id = `quantity${cartItem.id}`;
   quantityDisplay.textContent = cartItem.quantity;
-  quantityDisplay.className = "bg-white text-black text-center h-6 w-8";
+  quantityDisplay.className =
+    "bg-white text-black text-center text-[13px] h-5 w-8";
 
   const incrementButton = createButton(
     "+",
-    "bg-gray-300 text-black h-6 w-[20px] flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center"
   );
 
   const totalPrice = document.createElement("p");
   totalPrice.id = `totalPrice${cartItem.id}`;
-  totalPrice.className = "absolute bottom-2 right-2 font-semibold";
+  totalPrice.className = "absolute bottom-2 right-2 text-xs font-semibold";
   totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(
     2
   )}$`;
