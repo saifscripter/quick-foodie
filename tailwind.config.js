@@ -11,7 +11,11 @@ module.exports = {
         "2xl": "12rem",
       },
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: "'Montserrat', sans-serif",
+      },
+    },
   },
   plugins: [],
 };
