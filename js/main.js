@@ -14,14 +14,14 @@ let cartItems = getCart();
 // Functions to create DOM Elements
 const createFoodItemCard = (foodItem) => {
   const card = document.createElement("div");
-  card.className = "bg-gray-50 p-4 rounded-md shadow-md";
+  card.className = "bg-gray-50 p-3 sm:p-2 rounded-md shadow-md";
 
   const photo = document.createElement("img");
   photo.className = "w-full";
   photo.src = foodItem.photoURL;
 
   const name = document.createElement("h2");
-  name.className = "text-xl font-semibold mt-4";
+  name.className = "text-lg font-semibold mt-3";
   name.textContent = foodItem.name;
 
   const price = document.createElement("p");
@@ -29,12 +29,12 @@ const createFoodItemCard = (foodItem) => {
   price.textContent = `${foodItem.price.toFixed(2)}$/each`;
 
   const description = document.createElement("p");
-  description.className = "text-gray-600 mt-4";
+  description.className = "text-gray-600 text-[14px] mt-1";
   description.textContent = foodItem.description;
 
   const addToCartButton = createButton(
     "Add to Cart",
-    "bg-red-600 text-white w-full py-1 mt-4 rounded-md",
+    "bg-red-500 text-white w-full h-8 mt-3 rounded-md",
     `addToCart${foodItem.id}`
   );
 
@@ -43,7 +43,7 @@ const createFoodItemCard = (foodItem) => {
 
   const customizeButton = createButton(
     "Customize",
-    "border-2 border-red-600 text-red-600 font-semibold w-full py-1 mt-2 rounded-md hover:text-red-700 hover:border-red-700"
+    "border-2 border-red-500 text-red-500 font-semibold w-full h-8 mt-2 rounded-md"
   );
 
   // Add the click event to the "Add to Cart" button
@@ -71,7 +71,7 @@ const createCartItemCard = (cartItem) => {
   const cartItemElement = document.createElement("div");
   cartItemElement.id = `item${cartItem.id}`;
   cartItemElement.className =
-    "relative border-2 border-white p-2 rounded-md grid grid-cols-[1fr_2fr] gap-3 h-32";
+    "relative border-2 border-white p-2 rounded-md grid grid-cols-[1fr_2fr] gap-3 h-28";
 
   const itemImage = document.createElement("div");
   itemImage.style.backgroundImage = `url(${cartItem.photoURL})`;
@@ -92,29 +92,30 @@ const createCartItemCard = (cartItem) => {
 
   const decrementButton = createButton(
     "-",
-    "bg-gray-200 text-black h-8 w-6 flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center"
   );
 
   const quantityDisplay = document.createElement("p");
   quantityDisplay.id = `quantity${cartItem.id}`;
   quantityDisplay.textContent = cartItem.quantity;
-  quantityDisplay.className = "bg-white text-black text-center h-6 w-8";
+  quantityDisplay.className =
+    "bg-white text-black text-center text-[13px] h-5 w-8";
 
   const incrementButton = createButton(
     "+",
-    "bg-gray-200 text-black h-8 w-6 flex justify-center items-center"
+    "bg-gray-300 text-black h-6 w-5 flex justify-center items-center"
   );
 
   const totalPrice = document.createElement("p");
   totalPrice.id = `totalPrice${cartItem.id}`;
-  totalPrice.className = "text-right";
+  totalPrice.className = "absolute bottom-2 right-2 text-xs font-semibold";
   totalPrice.textContent = `${(cartItem.quantity * cartItem.price).toFixed(
     2
   )}$`;
 
   const deleteButton = document.createElement("button");
   deleteButton.className =
-    "absolute top-0 right-0 bg-white text-red-600 size-6 rounded-md p-[6px] translate-x-1/2 -translate-y-1/2";
+    "absolute top-0 right-0 bg-white text-red-500 size-6 rounded-md p-[6px] translate-x-1/2 -translate-y-1/2";
 
   const deleteIcon = document.createElement("img");
   deleteIcon.src = "../images/trash.svg";
@@ -137,12 +138,12 @@ const createCartItemCard = (cartItem) => {
   itemDetails.appendChild(itemName);
   itemDetails.appendChild(itemPrice);
   itemDetails.appendChild(quantityAdjustment);
-  itemDetails.appendChild(totalPrice);
-  itemDetails.appendChild(deleteButton);
 
   // Append image and details to the cart item element
   cartItemElement.appendChild(itemImage);
   cartItemElement.appendChild(itemDetails);
+  cartItemElement.appendChild(totalPrice);
+  cartItemElement.appendChild(deleteButton);
 
   // Append the cart item element to the container
   cartItemsContainer.appendChild(cartItemElement);
@@ -204,13 +205,13 @@ function decreaseQuantity(cartItem) {
 function enableAddToCartButton(button) {
   button.removeAttribute("disabled");
   button.classList.remove("bg-gray-700");
-  button.classList.add("bg-red-600");
+  button.classList.add("bg-red-500");
   button.textContent = "Add to Cart";
 }
 
 function disableAddToCartButton(button) {
   button.setAttribute("disabled", "true");
-  button.classList.remove("bg-red-600");
+  button.classList.remove("bg-red-500");
   button.classList.add("bg-gray-700");
   button.textContent = "Added to Cart";
 }
